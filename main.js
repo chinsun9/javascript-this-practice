@@ -16,8 +16,18 @@ const anObject = {
     console.log(this); // {value: 0, checkThis: f}
     function doit() {
       console.log(this); // window // undefined
+
+      const asd = () => {
+        console.log(this);
+      };
+      asd();
     }
     doit();
+
+    const asdf = () => {
+      console.log(this);
+    };
+    asdf();
   },
   checkThis2: () => {
     console.log(this); // windows
@@ -55,10 +65,27 @@ const obj2 = {
     f();
     g();
   },
+  checkThis3: function () {
+    console.log(this);
+
+    function f() {
+      console.log(this);
+    }
+    const g = () => {
+      console.log(this);
+    };
+    const h = function () {
+      console.log(this);
+    };
+    f();
+    g();
+    h();
+  },
 };
 
 obj2.chekcThis();
 obj2.checkThis2();
+obj2.checkThis3();
 
 console.clear();
 
@@ -85,3 +112,17 @@ scope();
 console.clear();
 
 scope.apply({ a: 1 });
+
+console.clear();
+
+const someone = {
+  name: "sung",
+  whoAmI: function () {
+    console.log(this);
+  },
+};
+
+someone.whoAmI();
+
+const whoAmI = someone.whoAmI;
+whoAmI(); // undefined
