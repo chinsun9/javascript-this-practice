@@ -4,7 +4,7 @@ js this practice
 
 ## this
 
-- use strict / default
+- use strict / default(sloppy mode)
 
 ### 최상위 스코프에서
 
@@ -25,3 +25,4 @@ js this practice
 ## 참고
 
 - https://www.youtube.com/watch?v=kb0Af7dzCTs
+- https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode
