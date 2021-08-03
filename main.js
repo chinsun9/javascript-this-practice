@@ -132,6 +132,9 @@ console.clear();
 function Person(name, nickname) {
   this.name = name;
   this.nickname = nickname
+  this.sayHi = function () {
+    console.log(this.name, this.nickname, 'hello', this)
+  }
 }
 
 Person.prototype.sayHello = function () {
@@ -146,6 +149,24 @@ function sayHello(person) {
 }
 
 const sung = new Person('sung', 'superpower')
+const sung2 = new Person('sung', 'superpower')
+
+console.log(sung.sayHi === sung2.sayHi) // false
 
 sung.sayHello(); // this === {name: "sung", nickname: "superpower"}
 sayHello(sung); // this === undefined 
+
+class Human {
+  constructor(name, nickname) {
+    this.name = name;
+    this.nickname = nickname
+  }
+  sayHello() {
+    console.log(this.name, this.nickname, 'hello', this)
+  }
+}
+
+const sun91 = new Human('sung1', 'super1');
+const sun92 = new Human('sung2', 'super2');
+
+console.log(sun91.sayHello === sun92.sayHello) // true
