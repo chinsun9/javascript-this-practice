@@ -126,3 +126,26 @@ someone.whoAmI();
 
 const whoAmI = someone.whoAmI;
 whoAmI(); // undefined
+
+console.clear();
+
+function Person(name, nickname) {
+  this.name = name;
+  this.nickname = nickname
+}
+
+Person.prototype.sayHello = function () {
+  console.log('sayHello prototype')
+  console.log(this.name, this.nickname, 'hello', this)
+}
+
+function sayHello(person) {
+  console.log('sayHello function')
+  const { name, nickname } = person
+  console.log(name, nickname, 'hello', this)
+}
+
+const sung = new Person('sung', 'superpower')
+
+sung.sayHello(); // this === {name: "sung", nickname: "superpower"}
+sayHello(sung); // this === undefined 
